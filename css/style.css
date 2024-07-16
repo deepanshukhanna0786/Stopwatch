@@ -1,0 +1,292 @@
+/* Reset default margin, padding, and set box-sizing for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif; /* Set the default font for the entire document */
+}
+
+/* Main container styling */
+main {
+    position: relative;
+    min-height: 100vh; /* Make the main element at least as tall as the viewport */
+    height: 100%; /* Make the main element fill the height of the parent */
+    background: #091921; /* Dark background color */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+}
+
+/* Stopwatch title styling */
+.stopwatch__button {
+    text-align: center;
+    margin: 10px; /* Add some space around the title */
+}
+
+/* Content container for stopwatch and settings */
+.content {
+    max-width: 400px; /* Maximum width for content */
+    width: 100%; /* Make content take up full width of its container */
+    background-color: #091921; /* Dark background color */
+    color: #fff; /* White text color */
+    overflow: hidden; /* Hide content that overflows the container */
+    transition: all .5s; /* Smooth transition for changes */
+    position: relative; /* Position relative for child elements */
+    box-shadow: 0 0 10px #111, 0 0 10px #111, 0 0 10px #111; /* Shadow effect for the container */
+    padding: 20px; /* Padding inside the container */
+    border-radius: 10px; /* Rounded corners for the container */
+}
+
+/* Dark mode and Day mode settings panel */
+.panel {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    background-color: #fff; /* White background for the panel */
+    width: 280px; /* Fixed width for the panel */
+    border-radius: 10px; /* Rounded corners for the panel */
+    opacity: 0; /* Start hidden */
+    pointer-events: none; /* Disable interactions when hidden */
+    transition: all .5s; /* Smooth transition for changes */
+    transform: translateY(-150%); /* Move panel out of view */
+    z-index: 10; /* Ensure the panel is above other content */
+}
+
+/* Panel content styling */
+.panel__content {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    flex-direction: column; /* Stack items vertically */
+    padding: 15px 15px; /* Padding inside the panel */
+}
+
+/* Arrow and close icon styling */
+.panel__content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    transform: translateY(-40%);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #fff; /* White background for the arrow */
+    cursor: pointer; /* Pointer cursor for hover */
+}
+
+.panel p {
+    text-align: justify; /* Justify text alignment */
+    font-size: 15px; /* Font size for text */
+    font-weight: 500; /* Font weight */
+    color: #001d2b; /* Dark text color */
+    line-height: 22px; /* Line height for readability */
+    padding-bottom: 15px; /* Space below the text */
+}
+
+.panel input {
+    margin: 5px 7px; /* Margin around the radio buttons */
+}
+
+.radio {
+    transform: translateX(-15px); /* Move radio options to the left */
+    font-size: 15px; /* Font size for radio options */
+    font-weight: 500; /* Font weight */
+    color: #001d2b; /* Dark text color */
+    display: inline-block; /* Inline-block display for proper alignment */
+    vertical-align: middle; /* Align vertically in the middle */
+}
+
+/* Close icon for the panel */
+#panelX {
+    position: absolute;
+    top: 0;
+    transform: translateY(-40%);
+    font-size: 24px; /* Font size for the close icon */
+    color: #103041; /* Dark blue color for the icon */
+    cursor: pointer; /* Pointer cursor for hover */
+}
+
+/* Settings cog icon styling */
+.fas.fa-cog {
+    font-size: 24px; /* Font size for the cog icon */
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #fff; /* White color for the cog icon */
+    cursor: pointer; /* Pointer cursor for hover */
+    animation: rotate 3s linear infinite; /* Infinite rotation animation */
+    opacity: 0; /* Start hidden */
+    pointer-events: none; /* Disable interactions when hidden */
+    transition: .5s; /* Smooth transition for changes */
+}
+
+/* Stop rotation animation on hover */
+.fas.fa-cog:hover {
+    animation: none;
+}
+
+/* Show and animate the cog icon when active */
+.fas.fa-cog.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Show and animate the panel when active */
+.panel.active {
+    transition-delay: 0.1s;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Animation for rotating the cog icon */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* STOPWATCH STYLING */
+
+/* Container for stopwatch content */
+.stopwatch__content {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    flex-direction: column; /* Stack items vertically */
+    transform: translateX(0%); /* Initial position */
+    transition: all .5s; /* Smooth transition for changes */
+}
+
+/* Stopwatch display container */
+.stopwatch {
+    display: flex;
+    justify-content: center; /* Center stopwatch items horizontally */
+    text-align: center; /* Center text */
+    grid-gap: 20px; /* Space between stopwatch elements */
+    padding-bottom: 25px; /* Padding below the stopwatch */
+}
+
+/* Styling for hour, minute, and second containers */
+.hour, .min, .sec {
+    padding: 10px 15px; /* Padding inside containers */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 5px 5px; /* Shadow effect */
+}
+
+/* Styling for the hour, minute, and second text */
+.stHour, .stMin, .stSec {
+    font-family: sans-serif; /* Font family */
+    font-size: 22px; /* Font size */
+    letter-spacing: 3px; /* Spacing between letters */
+    margin-bottom: 5px; /* Space below the text */
+}
+
+/* Styling for the text labels (Hour, Min, Sec) */
+.stopwatch p {
+    position: relative;
+    font-size: 18px; /* Font size for labels */
+    padding-top: 5px; /* Space above the labels */
+}
+
+/* Adding an underline effect for labels */
+.stopwatch__text::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff; /* White underline */
+}
+
+/* Styling for stopwatch control buttons */
+.stopwatch__buttons {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    grid-gap: 10px; /* Space between buttons */
+    margin-top: 25px; /* Space above the buttons */
+}
+
+/* Common styling for all stopwatch buttons */
+.stopwatch__buttons button {
+    position: relative;
+    width: 75px; /* Button width */
+    height: 40px; /* Button height */
+    border-radius: 20px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    text-transform: capitalize; /* Capitalize text */
+    border: none; /* Remove default border */
+    outline: none; /* Remove default outline */
+    cursor: pointer; /* Pointer cursor for hover */
+    overflow: hidden; /* Hide overflow content */
+    box-shadow: 0 5px 5px; /* Shadow effect */
+}
+
+/* Start button styling */
+.start {
+    background-color: #28a745; /* Green background color */
+    color: #fff; /* White text color */
+}
+
+/* Stop button styling */
+.stop {
+    background-color: #dc3545; /* Red background color */
+    color: #fff; /* White text color */
+}
+
+/* Reset button styling */
+.reset {
+    background-color: #ffc107; /* Yellow background color */
+    color: #fff; /* White text color */
+}
+
+/* Button ripple effect */
+.stopwatch__buttons button span {
+    position: absolute;
+    background-color: #000; /* Black color for ripple */
+    transform: translate(-50%, -50%); /* Center the ripple */
+    pointer-events: none; /* Disable interactions */
+    border-radius: 50%; /* Circular shape */
+    animation: button 1s linear infinite; /* Ripple animation */
+}
+
+/* Ripple animation */
+@keyframes button {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 250px;
+        height: 250px;
+        opacity: 0.5;
+    }
+}
+
+/* Animation for moving the stopwatch content */
+.content.move-mode .stopwatch__content {
+    transform: translateX(0%);
+    display: block;
+    display: flex;
+}
+
+/* Hover effect for stopwatch buttons */
+.stopwatch__buttons button:hover {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+    transform: scale(1.1); /* Slightly enlarge the button */
+}
+
+/* Active button styles for pressed effect */
+.stopwatch__buttons button:active,
+.stopwatch__buttons button.active {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Darker shadow for active state */
+    transform: scale(1.3); /* Enlarge the button */
+    transition: transform 0.1s, box-shadow 0.1s; /* Quick transition for active state */
+}

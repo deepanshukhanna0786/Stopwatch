@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+
+    <!-- Link to external CSS stylesheets -->
+    <link rel="stylesheet" href="css/style.css">  <!-- Main styles for the stopwatch -->
+    <link rel="stylesheet" href="css/media.css">  <!-- Responsive design styles for various screen sizes -->
+    <link rel="stylesheet" href="css/color.css">  <!-- Color theme styles -->
+    
+    <!-- Preconnect to improve performance -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    
+    <!-- Link to Google Fonts for Montserrat font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <main class="main">
+        <!-- Main content container -->
+        <div class="content">
+            <!-- Stopwatch title -->
+            <div class="title"> 
+                <h2 class="stopwatch__button">
+                    <!-- Stopwatch icon from Font Awesome -->
+                    <i class="fas fa-stopwatch"></i>
+                    Stopwatch
+                </h2>
+            </div>
+            <div class="main__blog">
+                <!-- Stopwatch display and controls -->
+                <div class="stopwatch__content">
+                    <div class="stopwatch">
+                        <!-- Stopwatch display section -->
+                        <div class="hour">
+                            <div class="stHour">00</div> <!-- Hours display -->
+                            <p class="stopwatch__text">Hour</p> <!-- Hours label -->
+                        </div>
+                        <div class="min">
+                            <div class="stMin">00</div> <!-- Minutes display -->
+                            <p class="stopwatch__text">Min</p> <!-- Minutes label -->
+                        </div>
+                        <div class="sec">
+                            <div class="stSec">00</div> <!-- Seconds display -->
+                            <p class="stopwatch__text">Sec</p> <!-- Seconds label -->
+                        </div>
+                    </div>
+                    <div class="stopwatch__buttons">
+                        <!-- Stopwatch control buttons -->
+                        <button class="start" type="button">Start</button> <!-- Start the stopwatch -->
+                        <button class="stop" type="button">Stop</button>  <!-- Stop the stopwatch -->
+                        <button class="reset" type="button">Reset</button> <!-- Reset the stopwatch -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings icon for theme selection -->
+        <i class="fas fa-cog active" id="settings"></i>
+
+        <!-- Settings panel for theme selection -->
+        <div class="panel">
+            <div class="panel__content">
+                <p class="panel__text">Choose how Clock looks to you. Select a single theme</p> <!-- Instructions for the user -->
+                <i class="fas fa-times" id="panelX"></i> <!-- Close the settings panel -->
+                <label for="" class="radio">
+                    <input class="dark" type="radio" value="dark" name="pol">Dark theme <!-- Dark theme option -->
+                    <input class="day" type="radio" value="day" name="pol">Day theme   <!-- Day theme option -->
+                </label>
+            </div>
+        </div>
+    </main>
+
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- External JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
